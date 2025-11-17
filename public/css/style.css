@@ -255,7 +255,7 @@ button {
      width: 15px;
      height: 15px;
      margin: 0 8px;
-     background-color: #618735;
+     background-color: #353687;
      border-radius: 50%;
      display: inline-block;
      animation: bounce 1.4s infinite ease-in-out both;
@@ -313,7 +313,7 @@ button {
 }
 
 .sidepanel a:hover {
-     color: #90EE90;
+     color: #227adf;
 }
 
 .sidepanel .closebtn {
@@ -371,7 +371,7 @@ ul.conat_info li a:hover {
 /** banner section **/
 
 .banner_main {
-     background: url(../images/banner.jpg);
+     background: url(../images/banner.png);
      padding: 200px 0px 0px 0px;
      background-size: 100% 100%;
      background-repeat: no-repeat;
@@ -514,7 +514,7 @@ ul.conat_info li a:hover {
 
 .about {
      background-color: #2a2a2a;
-     padding-bottom: 170px
+     padding-bottom: 0px
 }
 
 .about .about_img figure {
@@ -543,10 +543,11 @@ ul.conat_info li a:hover {
 }
 
 .about .read_more {
-     background-color: #90EE90;
+     background-color: #227adf;
      color: #fff;
      font-weight: 500;
      margin-top: 44px;
+     border-radius: 20px;
 }
 
 .about .read_more:hover {
@@ -557,10 +558,103 @@ ul.conat_info li a:hover {
 /** end about section **/
 
 
+/** advantages section **/
+
+.advantages {
+     background-color: #0039ab;
+     padding: 70px 0 155px 0;
+}
+
+.bottom_cross5 {
+     position: relative;
+}
+
+.bottom_cross5::before {
+     position: absolute;
+     content: "";
+     width: 100%;
+     top: -127px;
+     background: url(../images/bottom_cross5.png);
+     background-repeat: no-repeat;
+     height: 177px;
+}
+
+.advantages .titlepage {
+     text-align: center;
+}
+
+.advantages .titlepage p {
+     color: #fff;
+     padding-top: 15px;
+     text-align: center;
+     margin: 0 50px;
+     margin-bottom: 35px;
+     font-size: 17px;
+     font-weight: 400;
+}
+
+.advantage_box {
+     text-align: center;
+     background-color: rgba(255, 255, 255, 0.1);
+     padding: 30px 20px;
+     border-radius: 10px;
+     margin-bottom: 30px;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage_box:hover {
+     transform: translateY(-10px);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.advantage_box i,
+.advantage_box .icon-svg {
+     font-size: 50px;
+     color: #fff;
+     margin-bottom: 20px;
+     width: 50px;
+     height: 50px;
+}
+
+.advantage_box h4 {
+     color: #fff;
+     font-size: 20px;
+     font-weight: 600;
+     margin-bottom: 15px;
+}
+
+.advantage_box p {
+     color: #fff;
+     font-size: 15px;
+     line-height: 24px;
+     margin: 0;
+}
+
+@media (max-width: 767px) {
+     .advantages .titlepage p {
+          margin: 0 20px;
+     }
+
+     .advantage_box {
+          padding: 20px 15px;
+     }
+
+     .advantage_box i {
+          font-size: 40px;
+     }
+
+     .advantage_box h4 {
+          font-size: 18px;
+     }
+}
+
+/** end advantages section **/
+
+
 /** rental section **/
 
 .rental {
-     background-color: #689438;
+     background-color: #0039ab;
      padding: 70px 0 155px 0;
 }
 
@@ -811,7 +905,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .tinueCar {
-     background: #689438;
+     background: #0039ab;
      font-weight: 500;
      font-size: 18px;
      width: 100%;
@@ -945,7 +1039,7 @@ label {
 
 .testimonial {
      padding: 18px 0 270px 0;
-     background-color: #689438;
+     background-color: #0039ab;
 }
 
 .testimonial .titlepage {
@@ -1135,6 +1229,12 @@ label {
      opacity: 1;
 }
 
+/* Make SVG icons appear in white */
+.icon-svg {
+     filter: brightness(0) invert(1);
+     -webkit-filter: brightness(0) invert(1);
+}
+
 
 /** end contact section **/
 
@@ -1212,7 +1312,7 @@ ul.social_icon li a {
 }
 
 ul.social_icon li a:hover {
-     background-color: #90EE90;
+     background-color: #227adf;
      color: #070101;
 }
 
@@ -1243,11 +1343,11 @@ ul.link li a {
 }
 
 ul.link li.active a {
-     color: #90EE90;
+     color: #227adf;
 }
 
 ul.link li a:hover {
-     color: #90EE90;
+     color: #227adf;
 }
 
 .news_form {
@@ -1269,7 +1369,7 @@ ul.link li a:hover {
      padding: 7px 15px;
      float: right;
      font-size: 18px;
-     background: #90EE90;
+     background: #227adf;
      color: #fff;
 }
 
@@ -1297,7 +1397,7 @@ ul.link li a:hover {
 }
 
 .copyright a:hover {
-     color: #90EE90;
+     color: #227adf;
 }
 
 
