@@ -258,6 +258,21 @@
                      <div class="row">
                         <div class="col-md-12">
                            <div class="ban_car">
+                              <h3 class="car-name">Brio</h3>
+                              <figure><img src="images/brio.png" alt="#" /></figure>
+                              <a class="read_more" href="#luxury">Rent Car</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="carousel-item">
+               <div class="container">
+                  <div class="carousel-caption">
+                     <div class="row">
+                        <div class="col-md-12">
+                           <div class="ban_car">
                               <h3 class="car-name">Terios</h3>
                               <figure><img src="images/terios.png" alt="#" /></figure>
                               <a class="read_more" href="#luxury">Rent Car</a>
@@ -283,7 +298,7 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2>Luxury Car From$100 Day</h2>
+                  <h2>Reservation for Car Rental</h2>
                </div>
             </div>
          </div>
@@ -298,8 +313,8 @@
                                  <option value="">Select your car type</option>
                                  <option value="Innova">Innova</option>
                                  <option value="Ayla">Ayla</option>
-                                 <option value="Jazz">Jazz</option>
-                                 <option value="Ledhok">Ledhok</option>
+                                 <option value="Brio">Brio</option>
+                                 <option value="Terios">Terios</option>
                               </select>
                            </div>
                         </div>
@@ -585,6 +600,24 @@
             `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
          window.open(url, "_blank");
+      });
+
+      document.getElementById('carType').addEventListener('change', function() {
+         const selected = this.value;
+         const img = document.querySelector('.luxury .ban_car figure img');
+         img.style.opacity = '0';
+         setTimeout(() => {
+            if (selected === 'Innova') {
+               img.src = 'images/innova.png';
+            } else if (selected === 'Ayla') {
+               img.src = 'images/ayla.png';
+            } else if (selected === 'Brio') {
+               img.src = 'images/brio.png';
+            } else if (selected === 'Terios') {
+               img.src = 'images/terios.png';
+            }
+            img.style.opacity = '1';
+         }, 250);
       });
    </script>
 

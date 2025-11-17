@@ -671,12 +671,13 @@ ul.conat_info li a:hover {
      margin: 0;
 }
 
-#rental1 .ban_car figure img {
+.ban_car figure img {
      max-height: 320px;
      width: auto;
      object-fit: contain;
      display: block;
      margin: 0 auto;
+     transition: opacity 0.5s ease;
 }
 
 @media (max-width: 767px) {
@@ -701,6 +702,15 @@ ul.conat_info li a:hover {
           font-size: 18px;
           margin-bottom: 8px;
      }
+
+          /* adjust caret position on small screens */
+          .select {
+               padding-right: 60px;
+          }
+          .select-box::after {
+               right: 20px;
+               font-size: 18px;
+          }
 }
 
 /* Layout for car name above the image and button in rental slides */
@@ -725,6 +735,15 @@ ul.conat_info li a:hover {
 
 
 /** end rental section **/
+
+/* make date picker icon appear white on WebKit browsers */
+input[type="date"] {
+     color: #fff;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+     filter: invert(1) brightness(2) contrast(1);
+     -webkit-filter: invert(1) brightness(2) contrast(1);
+}
 
 
 /** luxury section **/
@@ -780,6 +799,7 @@ ul.conat_info li a:hover {
 
 .form_luxury {
      border: #fff solid 1px;
+     border-radius: 8px;
      margin-bottom: 25px;
      width: 100%;
      height: 57px;
@@ -868,11 +888,24 @@ label {
      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
      background: transparent;
      border: #fff solid 1px;
+     border-radius: 8px;
      margin-top: 0;
      margin-bottom: 20px;
      height: 56px;
      color: #fff;
      font-size: 16px;
+}
+
+/* remove native arrow and make room for custom caret */
+.select {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     padding-right: 80px;
+}
+
+.select-box::after {
+     content: none;
 }
 
 .select option {
@@ -1030,6 +1063,24 @@ label {
      position: relative;
 }
 
+     .select {
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+          padding-right: 80px; /* make room for custom caret */
+     }
+
+     .select-box::after {
+          content: "\f0d7"; /* FontAwesome caret-down */
+          font-family: FontAwesome;
+          position: absolute;
+          right: 40px;
+          top: 30px; 
+          transform: translateY(-50%);
+          font-size: 20px; /* make caret bigger */
+          color: #fff;
+          pointer-events: none;
+     }
 .main_form .contactus {
      border-bottom: #959596 solid 1px;
      margin-bottom: 25px;
@@ -1132,7 +1183,6 @@ label {
      font-size: 17px;
      line-height: 28px;
      text-align: left;
-     display: inline-block;
      padding-right: 19px;
      padding-top: 17px;
 }
