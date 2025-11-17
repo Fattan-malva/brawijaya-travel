@@ -591,10 +591,23 @@
          const pick = document.getElementById("pickDate").value;
          const drop = document.getElementById("dropDate").value;
 
-         const phone = "6285707181774"; // 62 untuk Indonesia
+         const phone = "6285707181774";
+
+         // Format tanggal ke: 12 Desember 2025
+         const pickFormatted = new Date(pick).toLocaleDateString("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+         });
+
+         const dropFormatted = new Date(drop).toLocaleDateString("id-ID", {
+            day: "numeric",
+            month: "long",
+            year: "numeric"
+         });
 
          const message =
-            `Permisi saya ingin booking ${carType} dari ${pick} hingga ${drop}`;
+            `Permisi saya ingin booking ${carType} dari ${pickFormatted} hingga ${dropFormatted}`;
 
          const url =
             `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -602,7 +615,7 @@
          window.open(url, "_blank");
       });
 
-      document.getElementById('carType').addEventListener('change', function() {
+      document.getElementById('carType').addEventListener('change', function () {
          const selected = this.value;
          const img = document.querySelector('.luxury .ban_car figure img');
          img.style.opacity = '0';
