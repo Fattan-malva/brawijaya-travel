@@ -732,23 +732,20 @@ label {
      position: relative;
 }
 
-.select,
-.label {
-     color: #fff;
-     display: block;
-     font-size: 16px;
-}
-
 .select {
      width: 100%;
-     position: absolute;
+     position: relative;
      top: 0;
-     padding: 5px 0;
-     opacity: 0;
-     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-     background: none transparent;
-     border: 0 none;
-     margin-top: 20px;
+     padding: 16px 15px;
+     opacity: 1;
+     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
+     background: transparent;
+     border: #fff solid 1px;
+     margin-top: 0;
+     margin-bottom: 20px;
+     height: 56px;
+     color: #fff;
+     font-size: 16px;
 }
 
 .select option {
@@ -757,29 +754,11 @@ label {
 }
 
 .select-box1 {
-     background-color: transparent;
-     border: #fff solid 1px;
-     height: 56px !important;
+     display: none;
 }
 
 .label {
-     position: relative;
-     padding: 16px 15px;
-     cursor: pointer;
-     margin-bottom: 25px;
-}
-
-.open .label::after {
-     content: "▲";
-}
-
-.label::after {
-     content: "▼";
-     font-size: 17px;
-     position: absolute;
-     right: -10px;
-     top: 0;
-     padding: 12px 24px;
+     display: none;
 }
 
 
