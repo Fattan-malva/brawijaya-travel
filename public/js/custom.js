@@ -96,3 +96,76 @@ $("select").on("change" , function() {
   label.find(".label-desc").html(selection);
     
 });
+
+
+/* Gallery Animation on Scroll
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+// Deteksi ketika galeri masuk ke viewport
+const galleryItems = document.querySelectorAll('.gallery-item');
+const galleryGrid = document.querySelector('.gallery-grid');
+
+// Gunakan Intersection Observer untuk mendeteksi kapan galeri masuk viewport
+if (galleryGrid && 'IntersectionObserver' in window) {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Tambahkan class animate ke semua gallery items satu-satu
+                galleryItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('animate');
+                    }, index * 100); // Delay 100ms antar item
+                });
+                // Hentikan observing setelah animasi dimulai
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(galleryGrid);
+} else if (galleryGrid) {
+    // Fallback untuk browser yang tidak support IntersectionObserver
+    galleryItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('animate');
+        }, index * 100);
+    });
+}
+
+/* Universal Scroll Animation for All Elements
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+// Deteksi elemen dengan class animasi ketika masuk viewport
+if ('IntersectionObserver' in window) {
+    const animationElements = document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in-scale');
+    
+    const animationObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Jika elemen memiliki class stagger, trigger animasi anak-anaknya
+                if (entry.target.classList.contains('stagger-1') || 
+                    entry.target.classList.contains('stagger-2') || 
+                    entry.target.classList.contains('stagger-3') || 
+                    entry.target.classList.contains('stagger-4')) {
+                    entry.target.classList.add('animate');
+                } else {
+                    // Untuk elemen yang bukan stagger, langsung animate
+                    entry.target.classList.add('animate');
+                }
+                animationObserver.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    animationElements.forEach(el => {
+        animationObserver.observe(el);
+    });
+}

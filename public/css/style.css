@@ -542,18 +542,6 @@ ul.conat_info li a:hover {
      display: inline-block;
 }
 
-.about .read_more {
-     background-color: #227adf;
-     color: #fff;
-     font-weight: 500;
-     margin-top: 44px;
-     border-radius: 20px;
-}
-
-.about .read_more:hover {
-     background-color: #000;
-}
-
 
 /** end about section **/
 
@@ -645,6 +633,10 @@ ul.conat_info li a:hover {
 
      .advantage_box h4 {
           font-size: 18px;
+     }
+
+     .bottom_cross5::before {
+          top: -50px;
      }
 }
 
@@ -797,14 +789,15 @@ ul.conat_info li a:hover {
           margin-bottom: 8px;
      }
 
-          /* adjust caret position on small screens */
-          .select {
-               padding-right: 60px;
-          }
-          .select-box::after {
-               right: 20px;
-               font-size: 18px;
-          }
+     /* adjust caret position on small screens */
+     .select {
+          padding-right: 60px;
+     }
+
+     .select-box::after {
+          right: 20px;
+          font-size: 18px;
+     }
 }
 
 /* Layout for car name above the image and button in rental slides */
@@ -834,6 +827,7 @@ ul.conat_info li a:hover {
 input[type="date"] {
      color: #fff;
 }
+
 input[type="date"]::-webkit-calendar-picker-indicator {
      filter: invert(1) brightness(2) contrast(1);
      -webkit-filter: invert(1) brightness(2) contrast(1);
@@ -914,6 +908,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
      margin-top: 20px !important;
      transition: ease-in all 0.5s;
      text-transform: uppercase;
+     border-radius: 20px;
 }
 
 .tinueCar:hover {
@@ -1015,6 +1010,158 @@ label {
      display: none;
 }
 
+
+/** gallery section **/
+.gallery-grid {
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     gap: 15px;
+}
+
+.gallery-item {
+     flex: 0 0 calc(20% - 15px);
+     /* 5 columns on desktop */
+     max-width: calc(20% - 15px);
+     margin-bottom: 15px;
+     opacity: 0;
+     transform: translateY(40px);
+     transition: none;
+}
+
+.gallery-item.animate {
+     animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.gallery-item:nth-child(1).animate {
+     animation-delay: 0s;
+}
+
+.gallery-item:nth-child(2).animate {
+     animation-delay: 0.1s;
+}
+
+.gallery-item:nth-child(3).animate {
+     animation-delay: 0.2s;
+}
+
+.gallery-item:nth-child(4).animate {
+     animation-delay: 0.3s;
+}
+
+.gallery-item:nth-child(5).animate {
+     animation-delay: 0.4s;
+}
+
+.gallery-item:nth-child(6).animate {
+     animation-delay: 0.5s;
+}
+
+.gallery-item:nth-child(7).animate {
+     animation-delay: 0.6s;
+}
+
+.gallery-item:nth-child(8).animate {
+     animation-delay: 0.7s;
+}
+
+.gallery-item:nth-child(9).animate {
+     animation-delay: 0.8s;
+}
+
+.gallery-item:nth-child(10).animate {
+     animation-delay: 0.9s;
+}
+
+@keyframes fadeInUp {
+     from {
+          opacity: 0;
+          transform: translateY(40px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+.gallery-item a {
+     display: block;
+     overflow: hidden;
+     border-radius: 8px;
+     transition: transform 0.3s ease;
+}
+
+.gallery-item a:hover {
+     transform: scale(1.05);
+}
+
+.gallery-item img {
+     width: 100%;
+     height: 200px;
+     /* Fixed height for 1:1 aspect ratio */
+     object-fit: cover;
+     transition: transform 0.3s ease;
+}
+
+.gallery-item a:hover img {
+     transform: scale(1.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+     .gallery-item {
+          flex: 0 0 calc(25% - 15px);
+          /* 4 columns on large tablets */
+          max-width: calc(25% - 15px);
+     }
+
+     .bottom_cross5::before {
+          top: -50px;
+     }
+}
+
+@media (max-width: 991px) {
+     .gallery-item {
+          flex: 0 0 calc(33.333% - 15px);
+          /* 3 columns on tablets */
+          max-width: calc(33.333% - 15px);
+     }
+
+     .bottom_cross5::before {
+          top: -50px;
+     }
+}
+
+@media (max-width: 767px) {
+     .gallery-item {
+          flex: 0 0 calc(50% - 15px);
+          /* 2 columns on mobile */
+          max-width: calc(50% - 15px);
+     }
+
+     .bottom_cross5::before {
+          top: -50px;
+     }
+
+     .bottom_cross::before {
+          height: 42px;
+     }
+}
+
+@media (max-width: 575px) {
+     .gallery-item {
+          flex: 0 0 calc(50% - 15px);
+          /* 2 columns on small mobile */
+          max-width: calc(50% - 15px);
+     }
+
+     .bottom_cross5::before {
+          top: -50px;
+     }
+}
+
+/** end gallery section **/
 
 /** end luxury section **/
 
@@ -1157,24 +1304,28 @@ label {
      position: relative;
 }
 
-     .select {
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          padding-right: 80px; /* make room for custom caret */
-     }
+.select {
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     padding-right: 80px;
+     /* make room for custom caret */
+}
 
-     .select-box::after {
-          content: "\f0d7"; /* FontAwesome caret-down */
-          font-family: FontAwesome;
-          position: absolute;
-          right: 40px;
-          top: 30px; 
-          transform: translateY(-50%);
-          font-size: 20px; /* make caret bigger */
-          color: #fff;
-          pointer-events: none;
-     }
+.select-box::after {
+     content: "\f0d7";
+     /* FontAwesome caret-down */
+     font-family: FontAwesome;
+     position: absolute;
+     right: 40px;
+     top: 30px;
+     transform: translateY(-50%);
+     font-size: 20px;
+     /* make caret bigger */
+     color: #fff;
+     pointer-events: none;
+}
+
 .main_form .contactus {
      border-bottom: #959596 solid 1px;
      margin-bottom: 25px;
@@ -1350,32 +1501,6 @@ ul.link li a:hover {
      color: #227adf;
 }
 
-.news_form {
-     text-align: left;
-     margin-top: 15px;
-}
-
-.news_form .letter_form {
-     font-family: 'Open Sans', sans-serif;
-     height: 45px;
-     width: 100%;
-     padding: 0 13px;
-     font-size: 17px;
-     border: inherit;
-     margin-bottom: 20px;
-}
-
-.news_form .sumbit {
-     padding: 7px 15px;
-     float: right;
-     font-size: 18px;
-     background: #227adf;
-     color: #fff;
-}
-
-.news_form .sumbit:hover {
-     background-color: #ff0000;
-}
 
 .copyright {
      margin-top: 55px;
@@ -1402,3 +1527,133 @@ ul.link li a:hover {
 
 
 /** end footer **/
+
+/* ========== SCROLL ANIMATION CLASSES ========== */
+
+/* Fade In Up Animation */
+.fade-in-up {
+     opacity: 0;
+     transform: translateY(40px);
+}
+
+.fade-in-up.animate {
+     animation: fadeInUpAnim 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUpAnim {
+     from {
+          opacity: 0;
+          transform: translateY(40px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+/* Fade In From Left */
+.fade-in-left {
+     opacity: 0;
+     transform: translateX(-40px);
+}
+
+.fade-in-left.animate {
+     animation: fadeInLeftAnim 0.8s ease-out forwards;
+}
+
+@keyframes fadeInLeftAnim {
+     from {
+          opacity: 0;
+          transform: translateX(-40px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateX(0);
+     }
+}
+
+/* Fade In From Right */
+.fade-in-right {
+     opacity: 0;
+     transform: translateX(40px);
+}
+
+.fade-in-right.animate {
+     animation: fadeInRightAnim 0.8s ease-out forwards;
+}
+
+@keyframes fadeInRightAnim {
+     from {
+          opacity: 0;
+          transform: translateX(40px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateX(0);
+     }
+}
+
+/* Fade In With Scale */
+.fade-in-scale {
+     opacity: 0;
+     transform: scale(0.85);
+}
+
+.fade-in-scale.animate {
+     animation: fadeInScaleAnim 0.8s ease-out forwards;
+}
+
+@keyframes fadeInScaleAnim {
+     from {
+          opacity: 0;
+          transform: scale(0.85);
+     }
+
+     to {
+          opacity: 1;
+          transform: scale(1);
+     }
+}
+
+/* Stagger animation delay utilities */
+.stagger-1 {
+     --stagger-delay: 0.1s;
+}
+
+.stagger-2 {
+     --stagger-delay: 0.2s;
+}
+
+.stagger-3 {
+     --stagger-delay: 0.3s;
+}
+
+.stagger-4 {
+     --stagger-delay: 0.4s;
+}
+
+.stagger-5 {
+     --stagger-delay: 0.5s;
+}
+
+.stagger-6 {
+     --stagger-delay: 0.6s;
+}
+
+.stagger-7 {
+     --stagger-delay: 0.7s;
+}
+
+.stagger-8 {
+     --stagger-delay: 0.8s;
+}
+
+.fade-in-up.animate,
+.fade-in-left.animate,
+.fade-in-right.animate,
+.fade-in-scale.animate {
+     animation-delay: var(--stagger-delay, 0s);
+}
