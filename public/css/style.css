@@ -367,6 +367,11 @@ ul.conat_info li a:hover {
      z-index: 999;
 }
 
+.header .logo {
+     float: left;
+     max-width: 180px;
+}
+
 
 /** banner section **/
 
@@ -1426,6 +1431,8 @@ label {
 
 .logo_bottom {
      float: left;
+     max-width: 180px;
+     margin-bottom: 16px;
 }
 
 .footer p {
