@@ -169,3 +169,86 @@ if ('IntersectionObserver' in window) {
         animationObserver.observe(el);
     });
 }
+
+/* Gallery Modal Zoom Functionality
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- */
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('galleryModal');
+    const modalImage = document.querySelector('.gallery-modal-image');
+    const modalClose = document.querySelector('.gallery-modal-close');
+    const modalPrev = document.querySelector('.gallery-modal-prev');
+    const modalNext = document.querySelector('.gallery-modal-next');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    
+    let currentIndex = 0;
+    const images = [];
+
+    // Kumpulkan semua URL gambar dari gallery
+    galleryItems.forEach((item, index) => {
+        const link = item.querySelector('a');
+        if (link) {
+            const imgSrc = link.getAttribute('href');
+            images.push(imgSrc);
+            
+            // Tambahkan event listener ke setiap gallery item
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                currentIndex = index;
+                openModal(index);
+            });
+        }
+    });
+
+    // Fungsi membuka modal
+    function openModal(index) {
+        if (images[index]) {
+            modalImage.src = images[index];
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Fungsi menutup modal
+    function closeModal() {
+        modal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Fungsi show image berikutnya
+    function showNext() {
+        currentIndex = (currentIndex + 1) % images.length;
+        modalImage.src = images[currentIndex];
+    }
+
+    // Fungsi show image sebelumnya
+    function showPrev() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        modalImage.src = images[currentIndex];
+    }
+
+    // Event listeners
+    modalClose.addEventListener('click', closeModal);
+    modalNext.addEventListener('click', showNext);
+    modalPrev.addEventListener('click', showPrev);
+
+    // Tutup modal saat click di background
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!modal.classList.contains('show')) return;
+        
+        if (e.key === 'Escape') {
+            closeModal();
+        } else if (e.key === 'ArrowRight') {
+            showNext();
+        } else if (e.key === 'ArrowLeft') {
+            showPrev();
+        }
+    });
+});
